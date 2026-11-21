@@ -1,5 +1,5 @@
 # trustwright repo handoff
-Chain state lives in ../plugin-backlog/ai-docs/new5/trustwright/HANDOFF.md.
+Chain state lives in the owner's private backlog (not in this repo).
 Session 1 (2026-11-21): research + scope plan. Next: trust.py log/stop/show with fixture tests.
 
 ## Session 2 (2026-11-21)
@@ -7,3 +7,6 @@ trust.py log/stop/show/diff/scan/check + 6 unittest fixture tests. Next: SKILL.m
 
 ## Session 3 (2026-11-21)
 Hub skills/trustwright/SKILL.md + references (taxonomy, verify, sources; every URL fetch-checked) + .claude-plugin/plugin.json 0.1.0. Next (final session): evergreen unit, evals with baseline, README banner, marketplace install, release 0.1.0, askwright page for going public.
+
+## Session 4 (2026-11-21)
+Evergreen unit, eval suite (2 cases baseline + skill-on), README with banner, LICENSE, SECURITY.md, CHANGELOG, marketplace.json, pytest.ini; release 0.1.0. Committed .pyc files (history) carried local paths; removed and ignored from 0.1.0 on.

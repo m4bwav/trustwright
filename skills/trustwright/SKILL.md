@@ -24,7 +24,7 @@ When an agent does something notable (ignores an instruction, changes permission
 
 A stop is a false positive when the task was legitimate and a person reading it would not object.
 
-1. Find the source: a provider classifier hard stop (Claude Code's "Usage Policy" stop ends the turn with no model text), a model refusal (the model writes the refusal), or a harness permission block. Load [taxonomy](../../references/taxonomy.md) for categories.
+1. Find the source: a provider classifier hard stop (Claude Code's "Usage Policy" stop ends the turn with no model text), a model refusal (the model writes the refusal), or a harness permission block. Load [taxonomy](../../references/taxonomy.md) for categories; `--category` accepts only the names listed in `TRUST stop --help`.
 2. `TRUST stop --harness claude-code --version <v> --model <id> --task "<what was asked, no secrets>" --source <provider-classifier|model-refusal|harness-permission|other> --category <topic or trigger type> --message "<verbatim>" --workaround "<what got it through, if anything>"`.
 3. For a past session: `TRUST scan <session.jsonl>` proposes entries (it skips the person's own typed text). Confirm each before recording.
 4. A workaround is rephrasing with the real context (purpose, ownership, safe target). Never record or use a jailbreak.
@@ -48,4 +48,4 @@ A stop is a false positive when the task was legitimate and a person reading it 
 
 ## Maintenance
 
-Sources are in [sources](../../references/sources.md). Refresh when a listed harness ships a major version or a stop signature changes.
+Sources are in [sources](../../references/sources.md). Refresh when a listed harness ships a major version or a stop signature changes. Evergreen unit: [MAINTENANCE.md](MAINTENANCE.md) (state in `evergreen.json`, tests in [TESTS.md](TESTS.md)).

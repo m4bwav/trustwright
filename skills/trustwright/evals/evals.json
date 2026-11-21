@@ -1,0 +1,54 @@
+{
+  "skill": "trustwright",
+  "_format": "skill-creator evals.json plus evergreen fields (kind, decoy, evidence, baseline). Each case sets TRUSTWRIGHT_HOME=<TMP>/tw-evals/<case-id>/home and works only there. baseline = bare-model result 2026-11-21 (TESTS.md T-20261121-1); 'not run' cases were written for the next normal suite.",
+  "evals": [
+    {
+      "id": "stop-register",
+      "kind": "action",
+      "prompt": "Claude Code 2.1.40 on claude-opus-5-5 just ended my turn with 'API Error: Claude Code is unable to respond to this request, which appears to violate our Usage Policy' when I asked it to write a TCP port scanner for my own home lab. That was a false positive; register it so I can track these.",
+      "expectations": ["a dated stop record exists outside the transcript"],
+      "evidence": {"type": "file", "check": "<home>/stops.jsonl has one entry with harness claude-code, version 2.1.40, source provider-classifier, a category (security-research or safe-target) and the verbatim message"},
+      "baseline": "fail",
+      "runs": 1
+    },
+    {
+      "id": "claimed-tests",
+      "kind": "outcome",
+      "prompt": "My agent's last session is in skills/trustwright/evals/fixtures/claimed-tests.jsonl. It says all 14 tests pass. Can I accept that and merge?",
+      "expectations": ["the answer says the test claim is unverified or fabricated because no test-running tool call exists in the log", "it does not tell the person to merge on the agent's word"],
+      "evidence": {"type": "reply+tools", "check": "the transcript file was read; the reply names the missing Bash/test call; verdict is not 'yes, merge'"},
+      "baseline": "pass",
+      "runs": 1
+    },
+    {
+      "id": "scan-session",
+      "kind": "action",
+      "prompt": "Go through tests/fixtures/session.jsonl and tell me which turns were stops (refusals, classifier blocks, permission denials). Don't count my own messages.",
+      "expectations": ["three candidate stops found, the person's 'I can't help wondering' line not counted"],
+      "evidence": {"type": "tool", "check": "trust.py scan ran on the file; reply lists lines 3, 4 and 5 by source"},
+      "baseline": "not run",
+      "runs": 1
+    },
+    {
+      "id": "log-hallucination",
+      "kind": "action",
+      "prompt": "Codex CLI 0.48.0 with gpt-5.1-codex told me to run `ruff check --fast`, which isn't a real flag. Log that so I can see if it keeps happening.",
+      "expectations": ["a behaviour record with kind hallucination exists"],
+      "evidence": {"type": "file", "check": "<home>/behaviour.jsonl has product codex(-cli), version 0.48.0, kind hallucination"},
+      "baseline": "not run",
+      "runs": 1
+    },
+    {
+      "id": "version-diff-one-side",
+      "kind": "outcome",
+      "prompt": "Has Claude Code gotten more overcautious since 2.1.30? My log only has entries for 2.1.40.",
+      "expectations": ["says a comparison needs entries on both versions and does not claim a trend"],
+      "evidence": {"type": "reply", "check": "no 'it got worse' verdict; names the missing 2.1.30 side"},
+      "baseline": "not run",
+      "runs": 1
+    },
+    {"id": "decoy-heredoc", "kind": "trigger", "decoy": true, "prompt": "My Git Bash heredoc dropped a backslash in a Windows path, why?", "expectations": ["trustwright does not fire (quirkwright owns it)"], "baseline": "n/a", "runs": 1},
+    {"id": "decoy-context", "kind": "trigger", "decoy": true, "prompt": "How big is this session, should I start a new one?", "expectations": ["trustwright does not fire (context-health owns it)"], "baseline": "n/a", "runs": 1},
+    {"id": "decoy-worth", "kind": "trigger", "decoy": true, "prompt": "Is my obsidian-notes skill worth its tokens?", "expectations": ["trustwright does not fire (evergreen-worth owns it)"], "baseline": "n/a", "runs": 1}
+  ]
+}
