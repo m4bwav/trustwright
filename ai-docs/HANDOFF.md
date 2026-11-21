@@ -4,3 +4,6 @@ Session 1 (2026-11-21): research + scope plan. Next: trust.py log/stop/show with
 
 ## Session 2 (2026-11-21)
 trust.py log/stop/show/diff/scan/check + 6 unittest fixture tests. Next: SKILL.md hub + references (taxonomy, verify, sources), evergreen unit, evals, README banner.
+
+## Session 3 (2026-11-21)
+Hub skills/trustwright/SKILL.md + references (taxonomy, verify, sources; every URL fetch-checked) + .claude-plugin/plugin.json 0.1.0. Next (final session): evergreen unit, evals with baseline, README banner, marketplace install, release 0.1.0, askwright page for going public.
