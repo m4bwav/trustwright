@@ -1,0 +1,16 @@
+{
+  "name": "trustwright",
+  "owner": {
+    "name": "Mark Rogers"
+  },
+  "metadata": {
+    "description": "Per-version behaviour log, false-positive stop register and answer checks for AI agents"
+  },
+  "plugins": [
+    {
+      "name": "trustwright",
+      "source": "./",
+      "description": "How AI agents and harnesses behave, version to version: a first-hand behaviour log, a false-positive stop register, transcript stop scan, version diff and verification checklists. trust.py, standard library only."
+    }
+  ]
+}
