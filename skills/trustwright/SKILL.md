@@ -3,7 +3,7 @@ name: trustwright
 description: "Record and check how AI agents and harnesses behave per product and version (Claude Code, Codex, Copilot, Cursor, Gemini CLI, claude.ai): log a behaviour observation, register a false-positive safety stop or refusal (task, date, model, harness, stop source, category), scan a session transcript for stops, compare behaviour between versions, and run a verification checklist before accepting an answer. Use on 'log this refusal', 'that was a false positive stop', 'did this get worse in the new version', 'Claude Code keeps doing X since the update', 'is this answer right, check it', 'did it really run the tests', 'record that the agent hallucinated'. Not for Windows host quirks (quirkwright), context size (context-health) or whether a skill is worth its tokens (evergreen-worth)."
 license: MIT
 metadata:
-  version: 0.1.0
+  version: 0.1.1
 ---
 
 # trustwright

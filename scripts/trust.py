@@ -88,7 +88,9 @@ def cmd_stop(a):
 
 
 def vkey(v):
-    return [int(x) if x.isdigit() else x for x in re.split(r"[.\-]", v or "")]
+    """Version sort key. Number parts sort as numbers and before text parts, so
+    'unknown' or '2.1.0-beta' never compare an int with a str (TypeError in 0.1.0)."""
+    return [(0, int(x), "") if x.isdigit() else (1, 0, x) for x in re.split(r"[.\-]", v or "")]
 
 
 def cmd_show(a):
@@ -115,6 +117,12 @@ def cmd_diff(a):
     for r in sorted(new, key=lambda r: vkey(r["version"])):
         mark = "same" if r["observation"] in old else "new"
         print(f"  {r['version']} [{r['kind']}] ({mark}) {r['observation']}")
+    seen = {r["observation"] for r in new}
+    gone = sorted(o for o in old if o not in seen)
+    if new and gone:
+        print(f"  not seen after {a.from_v}:")
+        for o in gone:
+            print(f"  (gone?) {o}")
     return 0
 
 

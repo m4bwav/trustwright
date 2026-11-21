@@ -72,5 +72,31 @@ class Check(Base):
         self.assertIn("chain-of-verification", out)
 
 
+class Regressions(Base):
+    def log(self, version, obs):
+        run("log", "--product", "cc", "--version", version, "--kind", "other", "--observation", obs)
+
+    def test_unknown_version_sorts(self):
+        # 0.1.0 raised TypeError: the skill tells you to write 'unknown' for an unknown version
+        self.log("2.1.3", "a")
+        self.log("unknown", "b")
+        self.log("2.1.0-beta", "c")
+        code, out = run("show")
+        self.assertEqual(code, 0)
+        code, out = run("diff", "--product", "cc", "--from", "2.1.0", "--to", "2.2")
+        self.assertEqual(code, 0)
+        self.assertIn("(new) a", out)
+
+    def test_diff_lists_disappeared(self):
+        # README and SKILL promise what appeared and disappeared; 0.1.0 printed only appeared
+        self.log("1.0", "old habit")
+        self.log("1.0", "kept habit")
+        self.log("1.1", "kept habit")
+        code, out = run("diff", "--product", "cc", "--from", "1.0", "--to", "1.1")
+        self.assertIn("(same) kept habit", out)
+        self.assertIn("(gone?) old habit", out)
+        self.assertNotIn("(gone?) kept habit", out)
+
+
 if __name__ == "__main__":
     unittest.main()
