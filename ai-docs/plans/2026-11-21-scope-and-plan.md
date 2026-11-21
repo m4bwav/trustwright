@@ -18,3 +18,12 @@ taxonomy.md (OR-Bench/XSTest categories, stop sources), verify.md (checklists; d
 
 ## Order
 1. trust.py log/stop/show + tests. 2. scan + check. 3. SKILL.md + references. 4. evergreen unit, evals with baseline. 5. README with banner, marketplace install, release. Public question on an askwright page near release.
+
+## Goal
+Ship the plugin as scoped below.
+
+## Status
+Done: released 0.1.0 (2026-11-21); see HANDOFF.md.
+
+## Next single action
+See HANDOFF.md.
