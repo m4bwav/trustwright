@@ -1,0 +1,8 @@
+{
+  "name": "trustwright",
+  "version": "0.1.0",
+  "description": "How AI agents and harnesses actually behave, product to product and version to version: a first-hand behaviour log per product and version, a false-positive stop register (task, date, model, harness, stop source), hallucination and overcaution patterns tied to versions, and verification checklists that catch a wrong answer before it is accepted.",
+  "author": { "name": "Mark Rogers" },
+  "license": "MIT",
+  "repository": "https://github.com/m4bwav/trustwright"
+}
