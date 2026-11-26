@@ -45,6 +45,7 @@ A stop is a false positive when the task was legitimate and a person reading it 
 - First-hand only: an entry records something seen in this person's sessions, dated, with the version.
 - No secrets, tokens or private names in `--task` or `--message`; paraphrase the sensitive part.
 - A pattern ("invents package names on Codex 0.4x") needs at least two dated entries before it is stated as one.
+- Asked how the agent judges copyright or recognises audio, images or people: load [media-judgement](../../references/media-judgement.md). There is no hidden detector; say what was actually checked.
 
 ## Maintenance
 
