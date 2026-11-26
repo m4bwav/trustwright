@@ -2,7 +2,7 @@
 
 ![trustwright banner](.github/images/banner.jpg)
 
-A record of how AI agents and their harnesses actually behave, product by product and version by version, and checklists that stop a wrong answer from being accepted. A Claude Code plugin with one skill and a standard-library script.
+A record of how AI agents and their harnesses actually behave, product by product and version by version, and checklists that stop a wrong answer from being accepted. An agent plugin with one skill and a standard-library script.
 
 Vendor changelogs rarely say "the model now refuses more" or "it started claiming test runs it never made". trustwright keeps your own dated, first-hand entries so you can tell.
 
