@@ -3,3 +3,4 @@
 - 2026-11-21: private details (chain state, local paths, install and owner-only steps) moved to the maintainer's private sidecar; public docs kept generic; everlast doc set and AGENTS.md pointer added.
 ## [2026-11-21] index | rebuilt (1 entries)
 ## [2026-11-21] index | rebuilt (1 entries)
+- 2026-11-25: added references/media-judgement.md (no hidden copyright detector; no audio input; no face identification; two copyright layers; US public-domain dates).
